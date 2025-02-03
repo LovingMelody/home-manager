@@ -16,7 +16,9 @@ in {
     package = mkPackageOption pkgs "linux-wallpaperengine" { };
 
     assetsPath = mkOption {
-      type = types.path;
+      type = with types; coercedTo path toString string;
+      default =
+        "${config.xdg.dataHome}/Steam/steamapps/common/wallpaper_engine/assets";
       description = "Path to the assets directory.";
     };
 
